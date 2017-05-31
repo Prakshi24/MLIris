@@ -1,14 +1,25 @@
 - hosts: localhost
+
   connection: local
+
   remote_user: test
+
   gather_facts: no
+
+
 
   tasks:
 
+
+
     - name: clone a repo
+
       command: git clone https://github.com/Prakshi24/MLIris.git
+
       command: cd /home/machineuser2/ansclw/MLIris
+
       command: python irs.py
+
       register: pass
 
     - debug: var=pass.stdout

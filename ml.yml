@@ -15,6 +15,4 @@
     - debug: var=pass.stdout
     - name: acc>acc2
       command: echo hello world
-      register: pass2
-    - debug: var=pass2.stdout
-      when: ((acc) > (acc2))
+      when: acc > acc2

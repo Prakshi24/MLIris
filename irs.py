@@ -15,9 +15,7 @@ print(accuracy_score(Y_test, predictions))
 accuracy = float(accuracy_score(Y_test, predictions))
 print type(accuracy)
 
-data = dict(
-	acc = accuracy,
-	acc2 = 0.5)
+data = dict(acc2 = 0.5)
 with open('data.yml', 'w') as outfile:
 	yaml.dump(data, outfile, default_flow_style=False)
 	

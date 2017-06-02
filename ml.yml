@@ -10,21 +10,14 @@
     - name: clone a repo
       command: git clone https://github.com/Prakshi24/MLIris.git
 
-    - name: clone a repo
+    - name: running Ml script
       command: python MLIris/irs.py
       register: pass
-
     - debug: var=pass.stdout
 
-- hosts: localhost
-  connection: local
-  remote_user: test
-  gather_facts: no
-  vars_files:
-    - data.yml
+    - name: Query Dynamo db
+      command: python MLIris/query.py
 
-  tasks:
-
-    - name: acc>acc2
+    - name: acc1>acc2
       command: echo hello world
-      when: acc > acc2
+      when: acc1 > acc2

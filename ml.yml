@@ -2,13 +2,21 @@
   connection: local
   remote_user: test
   gather_facts: no
-  vars_files:
-    - data.yml
-
   tasks:
 
     - name: clone a repo
       command: git clone https://github.com/Prakshi24/MLIris.git
+
+    - name: create data.yml
+      command: touch data.yml
+
+- hosts: localhost
+  connection: local
+  remote_user: test
+  gather_facts: no
+  vars_files:
+    - data.yml
+  tasks:
 
     - name: running Ml script
       command: python MLIris/irs.py

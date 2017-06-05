@@ -29,3 +29,17 @@
     - name: acc1>acc2
       command: echo hello world
       when: acc1 > acc2
+      register: result
+      ignore_errors: True
+    - name: on success
+      command: "{{item}}"
+      with_items:
+       - mkdir large-rep
+       - touch large-rep/first
+       - touch large-rep/second
+       - zip -r large-rep.zip large-rep
+       - git add large-rep.zip
+       - git commit -m "add zip"
+       - git pull origin master
+       - git push origin master
+      when: result|succeeded
